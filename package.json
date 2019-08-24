@@ -1,0 +1,37 @@
+{
+  "name": "parcel-react",
+  "version": "1.0.0",
+  "description": "Starter React app built with Parcel",
+  "main": "index.js",
+  "scripts": {
+    "start": "parcel ./public/index.html -p 8080",
+    "restart": "npm run clean && npm run start",
+    "clean": "rm -rf ./dist ./.cache",
+    "build-prod": "parcel build src/index.html",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "mc": "./scripts/createComponent.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gvjacob/parcel-react.git"
+  },
+  "author": "Gino Jacob",
+  "license": "MIT License",
+  "bugs": {
+    "url": "https://github.com/gvjacob/parcel-react/issues"
+  },
+  "homepage": "https://github.com/gvjacob/parcel-react#readme",
+  "dependencies": {
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
+  },
+  "devDependencies": {
+    "parcel-bundler": "^1.12.3",
+    "@babel/core": "^7.4.5",
+    "@babel/preset-env": "^7.4.5",
+    "@babel/preset-react": "^7.0.0",
+    "commander": "^2.20.0",
+    "css-modules": "^0.3.0",
+    "postcss-modules": "^1.4.1"
+  }
+}
