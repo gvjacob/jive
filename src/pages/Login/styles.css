@@ -1,0 +1,25 @@
+.page {
+  display: grid;
+  grid-template-rows: 1fr 2fr;
+}
+
+.login {
+  grid-row-start: 2;
+}
+
+.title {
+  font-size: 240px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.subtitle {
+  width: 400px;
+  margin: auto;
+  margin-bottom: 50px;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+}

@@ -22,8 +22,12 @@
   },
   "homepage": "https://github.com/gvjacob/parcel-react#readme",
   "dependencies": {
+    "@material-ui/core": "^4.4.2",
+    "@material-ui/icons": "^4.4.1",
     "react": "^16.8.6",
-    "react-dom": "^16.8.6"
+    "react-dom": "^16.8.6",
+    "react-router-dom": "^5.0.1",
+    "spotify-web-api-node": "^4.0.0"
   },
   "devDependencies": {
     "parcel-bundler": "^1.12.3",
