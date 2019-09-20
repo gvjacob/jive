@@ -1,6 +1,29 @@
 .title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: white;
 }
 
-.image {
+.card {
   width: 200px;
+  margin-bottom: 5px;
+  opacity: 0.3;
+  transition: opacity 0.2s;
+}
+
+.card:hover {
+  opacity: 1;
+}
+
+.content {
+  transition: background-color 0.2s;
+  background-color: black;
+
+  border-top: 0;
+}
+
+.selected {
+  background-color: #c2195b;
+  opacity: 1;
 }

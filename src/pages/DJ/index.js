@@ -1,5 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react';
 import cn from 'classnames';
+import StackGrid from 'react-stack-grid';
 
 import Playlist from '../../components/Playlist';
 import { SpotifyContext } from '../../contexts';
@@ -13,6 +14,15 @@ import { getAccessTokenFromURL } from '../../utils';
 const DJ = ({ className }) => {
   const spotify = useContext(SpotifyContext);
   const [playlists, setPlaylists] = useState([]);
+  const [selected, setSelected] = useState([]);
+
+  const toggle = (id) => {
+    if (selected.includes(id)) {
+      setSelected(selected.filter((playlistId) => playlistId != id));
+    } else {
+      setSelected(selected.concat([id]));
+    }
+  };
 
   useEffect(() => {
     const accessToken = getAccessTokenFromURL();
@@ -30,9 +40,16 @@ const DJ = ({ className }) => {
 
   return (
     <div className={cn(className)}>
-      {playlists.map((playlist, index) => (
-        <Playlist key={index} playlist={playlist} />
-      ))}
+      <StackGrid columnWidth={200}>
+        {playlists.map((playlist, index) => (
+          <Playlist
+            key={index}
+            playlist={playlist}
+            selected={selected.includes(playlist.id)}
+            toggle={toggle}
+          />
+        ))}
+      </StackGrid>
     </div>
   );
 };
