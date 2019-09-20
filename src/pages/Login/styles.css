@@ -1,6 +1,8 @@
 .page {
   display: grid;
-  grid-template-rows: 1fr 2fr;
+  grid-template-rows: 1fr 3fr;
+  width: 400px;
+  margin: auto;
 }
 
 .login {
@@ -14,12 +16,17 @@
 }
 
 .subtitle {
-  width: 400px;
-  margin: auto;
-  margin-bottom: 50px;
+  font-size: 24px;
 }
 
 .buttonContainer {
-  display: flex;
-  justify-content: center;
+  margin-top: 50px;
+}
+
+@media only screen and (max-width: 1600px) {
+  .title {
+    text-align: left;
+    font-size: 120px;
+    margin-bottom: -20px;
+  }
 }

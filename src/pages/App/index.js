@@ -1,5 +1,5 @@
 import React from 'react';
-import Spotify from 'spotify-web-api-node';
+import Spotify from 'spotify-web-api-js';
 import { BrowserRouter, Route } from 'react-router-dom';
 import { createMuiTheme } from '@material-ui/core';
 import { ThemeProvider } from '@material-ui/styles';
@@ -14,15 +14,7 @@ import DJ from '../DJ';
  * between the Login and DJ pages.
  */
 const App = (props) => {
-  const redirectUri = 'http://localhost:8080';
-  const clientId = 'a145c7bab9204f10b6db4651057b51bb';
-  const clientSecret = 'c451f51e753840408ee8fd302421968a';
-
-  const spotify = new Spotify({
-    redirectUri,
-    clientId,
-    clientSecret,
-  });
+  const spotify = new Spotify();
 
   const theme = createMuiTheme({
     palette: {

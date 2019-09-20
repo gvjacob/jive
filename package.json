@@ -24,9 +24,13 @@
   "dependencies": {
     "@material-ui/core": "^4.4.2",
     "@material-ui/icons": "^4.4.1",
+    "classnames": "^2.2.6",
+    "lodash": "^4.17.15",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-router-dom": "^5.0.1",
+    "regenerator-runtime": "^0.13.3",
+    "spotify-web-api-js": "^1.2.0",
     "spotify-web-api-node": "^4.0.0"
   },
   "devDependencies": {
