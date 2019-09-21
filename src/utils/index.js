@@ -22,7 +22,7 @@ export const createAuthorizeURL = (
 };
 
 export const orderPlaylists = (playlists) => {
-  const styles = ['Latin', 'Rhythm', 'Standard', 'Smooth'];
+  const styles = ['latin', 'rhythm', 'standard', 'smooth', 'open floor'];
 
   const [ballroom, others] = partition(playlists, ({ name }) =>
     includesOneOf(name, styles),
@@ -32,5 +32,5 @@ export const orderPlaylists = (playlists) => {
 };
 
 const includesOneOf = (value, options) => {
-  return options.some((option) => value.includes(option));
+  return options.some((option) => value.toLowerCase().includes(option));
 };
