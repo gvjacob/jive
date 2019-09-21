@@ -1,0 +1,15 @@
+.player {
+  margin-top: 40%;
+}
+
+.title {
+  font-size: 60px;
+  font-weight: bold;
+
+  text-align: center;
+}
+
+.media {
+  display: flex;
+  justify-content: center;
+}

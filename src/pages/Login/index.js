@@ -1,11 +1,9 @@
 import React, { useContext, useEffect } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 import cn from 'classnames';
 import Button from '@material-ui/core/Button';
 
 import { createAuthorizeURL } from '../../utils';
 import asPage from '../../hocs/asPage';
-import { SpotifyContext } from '../../contexts';
 import styles from './styles.css';
 
 /**

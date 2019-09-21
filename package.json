@@ -7,7 +7,8 @@
     "start": "parcel ./public/index.html -p 8080",
     "restart": "npm run clean && npm run start",
     "clean": "rm -rf ./dist ./.cache",
-    "build-prod": "parcel build src/index.html",
+    "build": "parcel build ./public/index.html",
+    "deploy": "rm -rf dist && npm run build && surge ./dist jive.surge.sh",
     "test": "echo \"Error: no test specified\" && exit 1",
     "mc": "./scripts/createComponent.js"
   },

@@ -1,0 +1,14 @@
+.page {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: 'player mosaic';
+}
+
+.player {
+  grid-area: player;
+  width: 100%;
+}
+
+.mosaic {
+  grid-area: mosaic;
+}

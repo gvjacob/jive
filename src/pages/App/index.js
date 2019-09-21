@@ -17,6 +17,13 @@ const App = (props) => {
   const spotify = new Spotify();
 
   const theme = createMuiTheme({
+    overrides: {
+      MuiIconButton: {
+        root: {
+          color: 'white',
+        },
+      },
+    },
     palette: {
       primary: pink,
     },

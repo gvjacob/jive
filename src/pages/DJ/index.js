@@ -2,16 +2,19 @@ import React, { useContext, useState, useEffect } from 'react';
 import cn from 'classnames';
 import StackGrid from 'react-stack-grid';
 
+import Player from '../../components/Player';
 import Playlist from '../../components/Playlist';
 import { SpotifyContext } from '../../contexts';
 import asPage from '../../hocs/asPage';
-import { getAccessTokenFromURL } from '../../utils';
+import { getAccessTokenFromURL, orderPlaylists } from '../../utils';
+
+import styles from './styles.css';
 
 /**
  * DJ page where all the Jive magic happens, such as
  * playback, playlist selection, and time configuration.
  */
-const DJ = ({ className }) => {
+const DJ = ({ className, setDocumentTitle }) => {
   const spotify = useContext(SpotifyContext);
   const [playlists, setPlaylists] = useState([]);
   const [selected, setSelected] = useState([]);
@@ -25,6 +28,7 @@ const DJ = ({ className }) => {
   };
 
   useEffect(() => {
+    setDocumentTitle('DJ');
     const accessToken = getAccessTokenFromURL();
 
     if (!accessToken) {
@@ -35,12 +39,17 @@ const DJ = ({ className }) => {
 
     spotify
       .getUserPlaylists({ limit: 50 })
-      .then(({ items }) => setPlaylists(items), console.log);
+      .then(({ items }) => setPlaylists(orderPlaylists(items)), console.log);
   }, []);
 
+  useEffect(() => {
+    console.log(playlists);
+  }, [playlists]);
+
   return (
-    <div className={cn(className)}>
-      <StackGrid columnWidth={200}>
+    <div className={cn(styles.page, className)}>
+      <Player className={styles.player} />
+      <StackGrid className={styles.mosaic} columnWidth={200}>
         {playlists.map((playlist, index) => (
           <Playlist
             key={index}

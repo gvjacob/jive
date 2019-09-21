@@ -1,3 +1,5 @@
+import { orderBy, partition } from 'lodash';
+
 /**
  * Get the 'code' query param from current URL.
  * Return null if not found.
@@ -17,4 +19,18 @@ export const createAuthorizeURL = (
   const queryScopes = scopes.join('%20');
 
   return `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=token&redirect_uri=${redirectURI}&state=${state}&scope=${queryScopes}`;
+};
+
+export const orderPlaylists = (playlists) => {
+  const styles = ['Latin', 'Rhythm', 'Standard', 'Smooth'];
+
+  const [ballroom, others] = partition(playlists, ({ name }) =>
+    includesOneOf(name, styles),
+  );
+
+  return ballroom.concat(others);
+};
+
+const includesOneOf = (value, options) => {
+  return options.some((option) => value.includes(option));
 };
