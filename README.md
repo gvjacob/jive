@@ -1,2 +1,2 @@
-# parcel-react
-Starter React app built with Parcel
+# **Jive**
+Automated DJ for choosing various ballroom songs from different dance styles when running an open floor.
