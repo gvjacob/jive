@@ -1,4 +1,5 @@
 import React, { useContext, useState, useEffect } from 'react';
+import { concat } from 'lodash';
 import cn from 'classnames';
 import StackGrid from 'react-stack-grid';
 
@@ -23,7 +24,7 @@ const DJ = ({ className, setDocumentTitle }) => {
     if (selected.includes(id)) {
       setSelected(selected.filter((playlistId) => playlistId != id));
     } else {
-      setSelected(selected.concat([id]));
+      setSelected(concat(selected, id));
     }
   };
 
@@ -42,13 +43,11 @@ const DJ = ({ className, setDocumentTitle }) => {
       .then(({ items }) => setPlaylists(orderPlaylists(items)), console.log);
   }, []);
 
-  useEffect(() => {
-    console.log(playlists);
-  }, [playlists]);
+  const selectedPlaylists = playlists.filter(({ id }) => selected.includes(id));
 
   return (
     <div className={cn(styles.page, className)}>
-      <Player className={styles.player} />
+      <Player className={styles.player} playlists={selectedPlaylists} />
       <StackGrid className={styles.mosaic} columnWidth={200}>
         {playlists.map((playlist, index) => (
           <Playlist
