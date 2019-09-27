@@ -1,0 +1,15 @@
+.title {
+  text-align: center;
+  font-size: 4rem;
+  font-weight: bold;
+}
+
+.information {
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+.jive {
+  color: #c2195b;
+  font-weight: bold;
+}

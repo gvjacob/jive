@@ -12,7 +12,15 @@ import styles from './styles.css';
 const Login = ({ className, setDocumentTitle }) => {
   const redirectURI = 'http://localhost:8080/dj';
   const clientId = 'a145c7bab9204f10b6db4651057b51bb';
-  const scopes = ['user-read-private', 'user-read-email'];
+  const scopes = [
+    'user-read-private',
+    'user-read-email',
+    'playlist-read-collaborative',
+    'user-modify-playback-state',
+    'streaming',
+    'user-read-currently-playing',
+    'user-read-playback-state',
+  ];
   const state = 'some-state';
 
   useEffect(() => {

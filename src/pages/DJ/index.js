@@ -29,7 +29,6 @@ const DJ = ({ className, setDocumentTitle }) => {
   };
 
   useEffect(() => {
-    setDocumentTitle('DJ');
     const accessToken = getAccessTokenFromURL();
 
     if (!accessToken) {
@@ -47,7 +46,11 @@ const DJ = ({ className, setDocumentTitle }) => {
 
   return (
     <div className={cn(styles.page, className)}>
-      <Player className={styles.player} playlists={selectedPlaylists} />
+      <Player
+        className={styles.player}
+        playlists={selectedPlaylists}
+        setDocumentTitle={setDocumentTitle}
+      />
       <StackGrid className={styles.mosaic} columnWidth={200}>
         {playlists.map((playlist, index) => (
           <Playlist

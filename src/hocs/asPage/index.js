@@ -20,11 +20,18 @@ const asPage = ($component) =>
     const documentTitle = 'Jive';
 
     useEffect(() => {
-      return () => (document.title = documentTitle);
+      return resetTitle;
     }, []);
 
-    const setDocumentTitle = (title) =>
-      (document.title = `${documentTitle} | ${title}`);
+    const setDocumentTitle = (title) => {
+      if (!title) {
+        resetTitle();
+      } else {
+        document.title = `${documentTitle} | ${title}`;
+      }
+    };
+
+    const resetTitle = () => (document.title = documentTitle);
 
     return (
       <$component
