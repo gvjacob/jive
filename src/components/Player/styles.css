@@ -1,8 +1,8 @@
 .player {
-  /* display: flex;
+  display: flex;
   flex-direction: column;
-  justify-content: center; */
-  margin-top: 40%;
+  justify-content: center;
+  height: 100%;
 }
 
 .currentPlaying {

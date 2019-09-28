@@ -2,11 +2,13 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-areas: 'player mosaic';
+  height: 100%;
 }
 
 .player {
   grid-area: player;
-  width: 100%;
+  width: 50%;
+  position: fixed;
 }
 
 .mosaic {
