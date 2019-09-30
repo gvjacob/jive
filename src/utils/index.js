@@ -34,3 +34,7 @@ export const orderPlaylists = (playlists) => {
 const includesOneOf = (value, options) => {
   return options.some((option) => value.toLowerCase().includes(option));
 };
+
+export const getRandomInt = (max) => {
+  return Math.floor(Math.random() * Math.floor(max));
+};

@@ -11,7 +11,7 @@ import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
 
 import styles from './styles.css';
 
-const Media = ({ name, artist, paused, togglePlayer }) => {
+const Media = ({ name, artist, next, previous, paused, togglePlayer }) => {
   return (
     <Fragment>
       <div className={styles.track}>
@@ -23,7 +23,7 @@ const Media = ({ name, artist, paused, togglePlayer }) => {
           <NavigateBeforeIcon fontSize={'large'} />
         </IconButton>
 
-        <IconButton aria-label="Previous">
+        <IconButton aria-label="Previous" onClick={previous}>
           <SkipPreviousIcon fontSize={'large'} />
         </IconButton>
 
@@ -35,7 +35,7 @@ const Media = ({ name, artist, paused, togglePlayer }) => {
           )}
         </Fab>
 
-        <IconButton aria-label="Next">
+        <IconButton aria-label="Next" onClick={next}>
           <SkipNextIcon fontSize={'large'} />
         </IconButton>
 

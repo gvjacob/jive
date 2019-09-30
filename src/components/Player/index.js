@@ -10,6 +10,7 @@ import SkipPreviousIcon from '@material-ui/icons/SkipPrevious';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
 
+import usePlaylists from '../../hooks/usePlaylists';
 import Idle from '../../components/Idle';
 import Media from '../../components/Media';
 import { SpotifyContext } from '../../contexts';
@@ -24,6 +25,7 @@ const Player = ({ className, playlists, setDocumentTitle }) => {
   const [track, setTrack] = useState({ name: null, artist: null });
   const [player, setPlayer] = useState(null);
   const spotify = useContext(SpotifyContext);
+  const [previous, next] = usePlaylists(playlists, spotify);
 
   useEffect(() => {
     if (player) {
@@ -73,7 +75,13 @@ const Player = ({ className, playlists, setDocumentTitle }) => {
       {isEmpty(playlists) ? (
         <Idle />
       ) : (
-        <Media {...track} paused={paused} togglePlayer={togglePlayer} />
+        <Media
+          {...track}
+          paused={paused}
+          togglePlayer={togglePlayer}
+          next={next}
+          previous={previous}
+        />
       )}
     </div>
   );
