@@ -13,7 +13,7 @@ import styles from './styles.css';
 
 /**
  * DJ page where all the Jive magic happens, such as
- * playback, playlist selection, and time configuration.
+* playback, playlist selection, and time configuration.
  */
 const DJ = ({ className, setDocumentTitle }) => {
   const spotify = useContext(SpotifyContext);
