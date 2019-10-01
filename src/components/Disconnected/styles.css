@@ -6,13 +6,9 @@
 
 .title {
   padding-left: 10px;
-  /* text-align: center; */
-}
-
-.instructions {
-  /* padding-left: 30%; */
 }
 
 .jive {
   color: #c2195b;
+  font-weight: bold;
 }

@@ -6,7 +6,8 @@ import Idle from '../../components/Idle';
 import Media from '../../components/Media';
 import Disconnected from '../../components/Disconnected';
 import { SpotifyContext } from '../../contexts';
-import usePlaylists from '../../hooks/usePlaylists';
+import useIndex from '../../hooks/useIndex';
+import { getRandomInt } from '../../utils';
 import styles from './styles.css';
 
 /**
@@ -17,7 +18,7 @@ const Player = ({ className, playlists, setDocumentTitle }) => {
   const spotify = useContext(SpotifyContext);
   const [connected, setConnected] = useState(false);
   const [player, setPlayer] = useState(null);
-  const [previous, next] = usePlaylists(playlists, spotify);
+  const [previousPlaylist, nextPlaylist, index] = useIndex(playlists);
   const [track, setTrack] = useState({
     name: null,
     artist: null,
@@ -32,7 +33,25 @@ const Player = ({ className, playlists, setDocumentTitle }) => {
     return { name, artist, paused };
   };
 
+  const playFromPlaylist = (index) => {
+    const { id, uri } = playlists[index];
+
+    spotify.getPlaylistTracks(id).then(({ items }) => {
+      const rand = getRandomInt(items.length);
+      spotify.play({ context_uri: uri, offset: { position: rand } });
+    });
+  };
+
+  const next = () => playFromPlaylist(index);
+  const previous = () => playFromPlaylist(index);
+
   const togglePlayer = () => player.togglePlay();
+
+  useEffect(() => {
+    if (!isEmpty(playlists) && connected) {
+      playFromPlaylist(index);
+    }
+  }, [index]);
 
   useEffect(() => {
     const { name, artist } = track;
@@ -46,7 +65,7 @@ const Player = ({ className, playlists, setDocumentTitle }) => {
         getOAuthToken: (callback) => {
           callback(spotify.getAccessToken());
         },
-        volume: 0.5,
+        volume: 0.2,
       });
 
       player.addListener('player_state_changed', (payload) => {
@@ -63,26 +82,6 @@ const Player = ({ className, playlists, setDocumentTitle }) => {
       player.addListener('ready', ({ device_id }) => {
         console.log(`Connected with ${device_id}`);
         setPlayer(player);
-      });
-
-      player.addListener('not_ready', ({ device_id }) => {
-        console.log('Device ID is not ready for playback', device_id);
-      });
-
-      player.on('initialization_error', ({ message }) => {
-        console.error('Failed to initialize', message);
-      });
-
-      player.on('authentication_error', ({ message }) => {
-        console.error('Failed to authenticate', message);
-      });
-
-      player.on('account_error', ({ message }) => {
-        console.error('Failed to validate Spotify account', message);
-      });
-
-      player.on('playback_error', ({ message }) => {
-        console.error('Failed to perform playback', message);
       });
 
       player.connect().then((success) => {
@@ -104,6 +103,8 @@ const Player = ({ className, playlists, setDocumentTitle }) => {
             togglePlayer={togglePlayer}
             next={next}
             previous={previous}
+            nextPlaylist={nextPlaylist}
+            previousPlaylist={previousPlaylist}
           />
         )
       ) : (

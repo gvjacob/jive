@@ -6,8 +6,7 @@ const Disconnected = () => {
   return (
     <div className={styles.disconnected}>
       <div className={styles.title}>
-        Connect to <span className={styles.jive}>Jive</span> on your Spotify
-        client
+        Connect to <span className={styles.jive}>Jive</span> on your phone
       </div>
       <ol className={styles.instructions}>
         <li>Go to Settings</li>
