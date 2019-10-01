@@ -69,6 +69,22 @@ const Player = ({ className, playlists, setDocumentTitle }) => {
         console.log('Device ID is not ready for playback', device_id);
       });
 
+      player.on('initialization_error', ({ message }) => {
+        console.error('Failed to initialize', message);
+      });
+
+      player.on('authentication_error', ({ message }) => {
+        console.error('Failed to authenticate', message);
+      });
+
+      player.on('account_error', ({ message }) => {
+        console.error('Failed to validate Spotify account', message);
+      });
+
+      player.on('playback_error', ({ message }) => {
+        console.error('Failed to perform playback', message);
+      });
+
       player.connect().then((success) => {
         console.log(
           success ? 'Connected to Spotify Player' : 'Failed to connect',

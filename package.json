@@ -8,7 +8,7 @@
     "restart": "npm run clean && npm run start",
     "clean": "rm -rf ./dist ./.cache",
     "build": "parcel build ./public/index.html",
-    "deploy": "rm -rf dist && npm run build && surge ./dist jive.surge.sh",
+    "deploy": "rm -rf dist && npm run build && cp ./dist/index.html ./dist/200.html && surge ./dist https://jive.surge.sh",
     "test": "echo \"Error: no test specified\" && exit 1",
     "mc": "./scripts/createComponent.js"
   },

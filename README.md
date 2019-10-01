@@ -1,6 +1,8 @@
 # **Jive**
 Automated DJ for choosing various ballroom songs from different dance styles when running an open floor.
 
+Jive is live [here](https://jive.surge.sh)!
+
 # **Getting Started**
 Clone the repo:
 ```bash
@@ -13,4 +15,4 @@ npm install
 npm start
 ```
 
-Head over the http://localhost:8080 to see Jive in action.
+Head over to http://localhost:8080 to see Jive in action.
