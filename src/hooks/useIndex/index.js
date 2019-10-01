@@ -2,20 +2,19 @@ import React, { useState, useEffect } from 'react';
 
 const useIndex = (list) => {
   const [index, setIndex] = useState(0);
-  const length = list.length;
 
   useEffect(() => {
-    if (index >= length) {
-      setIndex(Math.max(length - 1, 0));
+    if (index >= list.length) {
+      setIndex(Math.max(list.length - 1, 0));
     }
   }, [list]);
 
   const next = () => {
-    setIndex(index >= length - 1 ? 0 : index + 1);
+    setIndex(index >= list.length - 1 ? 0 : index + 1);
   };
 
   const previous = () => {
-    setIndex(index <= 0 ? length - 1 : index - 1);
+    setIndex(index <= 0 ? list.length - 1 : index - 1);
   };
 
   return [previous, next, index];

@@ -13,7 +13,7 @@ import styles from './styles.css';
 
 /**
  * DJ page where all the Jive magic happens, such as
-* playback, playlist selection, and time configuration.
+ * playback, playlist selection, and time configuration.
  */
 const DJ = ({ className, setDocumentTitle }) => {
   const spotify = useContext(SpotifyContext);
@@ -42,7 +42,9 @@ const DJ = ({ className, setDocumentTitle }) => {
       .then(({ items }) => setPlaylists(orderPlaylists(items)), console.log);
   }, []);
 
-  const selectedPlaylists = playlists.filter(({ id }) => selected.includes(id));
+  const selectedPlaylists = selected.map((playlistId) =>
+    playlists.find(({ id }) => id === playlistId),
+  );
 
   return (
     <div className={cn(styles.page, className)}>

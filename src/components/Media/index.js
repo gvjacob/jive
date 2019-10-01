@@ -21,12 +21,14 @@ const Media = ({
   previousPlaylist,
   paused,
   togglePlayer,
+  playlistName,
 }) => {
   return (
     <Fragment>
       <div className={styles.track}>
         <div className={styles.title}>{name}</div>
         <div className={styles.artist}>{artist}</div>
+        <div className={styles.playlistName}>{playlistName}</div>
       </div>
 
       <div className={styles.media}>
