@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter } from 'react-router-dom';
-import { render, wait } from '@testing-library/react';
+import { render, cleanup } from '@testing-library/react';
 
 import asPage from '.';
 
@@ -8,18 +8,15 @@ describe('asPage', () => {
   let $component;
   let text;
   let docTitle;
-  let routerHistory;
 
   beforeEach(() => {
-    const x = <div></div>;
     $component = asPage(({ text, setDocumentTitle, history }) => {
       useEffect(() => {
         setDocumentTitle(docTitle);
-        routerHistory = history;
       }, []);
 
       return <div data-testid={'$component'}>{text}</div>;
-    }, '/otherPage');
+    });
 
     text = 'hello';
     docTitle = 'world';
@@ -46,7 +43,7 @@ describe('asPage', () => {
   });
 
   it('sets document title and resets after unmounted', () => {
-    expect(document.title).toBe('Chef');
+    expect(document.title).toBe('Jive');
 
     const { unmount } = render(
       <BrowserRouter>
@@ -54,29 +51,9 @@ describe('asPage', () => {
       </BrowserRouter>,
     );
 
-    expect(document.title).toBe(`Chef | ${docTitle}`);
+    expect(document.title).toBe(`Jive | ${docTitle}`);
 
     unmount();
-    expect(document.title).toBe('Chef');
-  });
-
-  it('redirects to if user is not logged in', () => {
-    render(
-      <BrowserRouter>
-        <$component text={text} />
-      </BrowserRouter>,
-    );
-
-    expect(routerHistory.location.pathname).toBe('/otherPage');
-  });
-
-  it('redirects to if user is not logged in', () => {
-    render(
-      <BrowserRouter>
-        <$component text={text} />
-      </BrowserRouter>,
-    );
-
-    expect(routerHistory.location.pathname).toBe('/otherPage');
+    expect(document.title).toBe('Jive');
   });
 });
