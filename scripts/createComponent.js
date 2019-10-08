@@ -1,22 +1,18 @@
 #!/usr/bin/env node
-const commander = require('commander');
-const { exec } = require('child_process');
+const commander = require('commander')
+const { exec } = require('child_process')
 
 commander
-  .option(
-    '-d, --dir [dir]',
-    'Directory where the component lives',
-    'components',
-  )
+  .option('-d, --dir [dir]', 'Directory where the component lives', 'components')
   .option('-i, --index [index]', 'Name of component index file', 'index.js')
   .option('-s, --styles [styles]', 'Name of styles file', 'styles.css')
   .option('-t, --test [test]', 'Name of test file', 'test.js')
   .action((component, { dir, index, styles, test }) => {
-    const dirPath = `${__dirname}/../src/${dir}`;
-    const componentPath = `${dirPath}/${component}`;
-    const indexPath = `${componentPath}/${index}`;
-    const stylesPath = `${componentPath}/${styles}`;
-    const testPath = `${componentPath}/${test}`;
+    const dirPath = `${__dirname}/../src/${dir}`
+    const componentPath = `${dirPath}/${component}`
+    const indexPath = `${componentPath}/${index}`
+    const stylesPath = `${componentPath}/${styles}`
+    const testPath = `${componentPath}/${test}`
 
     const pathsAndContent = [
       {
@@ -31,14 +27,14 @@ commander
         path: testPath,
         content: '',
       },
-    ];
-    exec(`mkdir ${dirPath}`);
-    exec(`mkdir ${componentPath}`);
+    ]
+    exec(`mkdir ${dirPath}`)
+    exec(`mkdir ${componentPath}`)
 
     pathsAndContent.forEach(({ path, content }) => {
-      exec(`touch ${path}`);
-      exec(`echo "${content}" >> ${path}`);
-    });
-  });
+      exec(`touch ${path}`)
+      exec(`echo "${content}" >> ${path}`)
+    })
+  })
 
-commander.parse(process.argv);
+commander.parse(process.argv)

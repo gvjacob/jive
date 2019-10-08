@@ -11,6 +11,7 @@ describe('asPage', () => {
   let routerHistory;
 
   beforeEach(() => {
+    const x = <div></div>;
     $component = asPage(({ text, setDocumentTitle, history }) => {
       useEffect(() => {
         setDocumentTitle(docTitle);
