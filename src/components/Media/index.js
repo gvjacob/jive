@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import cn from 'classnames';
+
 import Fab from '@material-ui/core/Fab';
 import IconButton from '@material-ui/core/IconButton';
 import PlayIcon from '@material-ui/icons/PlayArrow';
@@ -12,6 +12,11 @@ import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
 
 import styles from './styles.css';
 
+/**
+ * Media information and controls including play, pause,
+ * next/prev song, next/prev playlist.
+ *
+ */
 const Media = ({
   name,
   artist,
@@ -19,12 +24,42 @@ const Media = ({
   previous,
   nextPlaylist,
   previousPlaylist,
-  paused,
+  paused = true,
   togglePlayer,
   playlistName,
 }) => {
+  const mediaControls = [
+    {
+      title: 'Previous Playlist',
+      onClick: previousPlaylist,
+      $icon: NavigateBeforeIcon,
+    },
+    {
+      title: 'Previous Song',
+      onClick: previous,
+      $icon: SkipPreviousIcon,
+    },
+    {
+      title: paused ? 'Play' : 'Pause',
+      onClick: togglePlayer,
+      $component: Fab,
+      $icon: paused ? PlayIcon : PauseIcon,
+      color: 'primary',
+    },
+    {
+      title: 'Next Song',
+      onClick: next,
+      $icon: SkipNextIcon,
+    },
+    {
+      title: 'Next Playlist',
+      onClick: nextPlaylist,
+      $icon: NavigateNextIcon,
+    },
+  ];
+
   return (
-    <Fragment>
+    <div data-testid={'Media'}>
       <div className={styles.track}>
         <div className={styles.title}>{name}</div>
         <div className={styles.artist}>{artist}</div>
@@ -32,41 +67,27 @@ const Media = ({
       </div>
 
       <div className={styles.media}>
-        <Tooltip title={'Previous Playlist'}>
-          <IconButton aria-label="Previous Playlist" onClick={previousPlaylist}>
-            <NavigateBeforeIcon fontSize={'large'} />
-          </IconButton>
-        </Tooltip>
-
-        <Tooltip title={'Previous Song'}>
-          <IconButton aria-label="Previous" onClick={previous}>
-            <SkipPreviousIcon fontSize={'large'} />
-          </IconButton>
-        </Tooltip>
-
-        <Tooltip title={paused ? 'Play' : 'Pause'}>
-          <Fab color="primary" aria-label="Play / Pause" onClick={togglePlayer}>
-            {paused ? (
-              <PlayIcon fontSize={'large'} />
-            ) : (
-              <PauseIcon fontSize={'large'} />
-            )}
-          </Fab>
-        </Tooltip>
-
-        <Tooltip title={'Next Song'}>
-          <IconButton aria-label="Next" onClick={next}>
-            <SkipNextIcon fontSize={'large'} />
-          </IconButton>
-        </Tooltip>
-
-        <Tooltip title={'Next Playlist'}>
-          <IconButton aria-label="Next Playlist" onClick={nextPlaylist}>
-            <NavigateNextIcon fontSize={'large'} />
-          </IconButton>
-        </Tooltip>
+        {mediaControls.map((mediaControl, index) => (
+          <MediaControlButton key={index} {...mediaControl} />
+        ))}
       </div>
-    </Fragment>
+    </div>
+  );
+};
+
+const MediaControlButton = ({
+  title,
+  $component = IconButton,
+  $icon,
+  color = 'default',
+  onClick,
+}) => {
+  return (
+    <Tooltip title={title}>
+      <$component color={color} aria-label={title} onClick={onClick}>
+        <$icon fontSize={'large'} />
+      </$component>
+    </Tooltip>
   );
 };
 

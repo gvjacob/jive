@@ -9,14 +9,18 @@ import CardMedia from '@material-ui/core/CardMedia';
 
 import styles from './styles.css';
 
+/**
+ * Playlist box displaying name and mosaic picture.
+ */
 const Playlist = ({ className, playlist, selected, toggle }) => {
-  const name = playlist.name;
+  const { name } = playlist;
   const images = get(playlist, 'images', []);
   const displayImage = isEmpty(images) ? null : get(images, 1, images[0]).url;
 
   return (
     <div
       className={cn(styles.card, className, { [styles.selected]: selected })}
+      data-testid={'Playlist'}
     >
       <Card onClick={() => toggle(playlist.id)}>
         <CardActionArea>

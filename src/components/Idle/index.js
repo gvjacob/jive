@@ -2,11 +2,12 @@ import React from 'react';
 import styles from './styles.css';
 
 /**
- * Idle state (no playlists selected)
+ * Idle state (no playlists selected), instruct
+ * users to select playlists.
  */
 const Idle = () => {
   return (
-    <div>
+    <div data-testid={'Idle'}>
       <div className={styles.title}>Select Playlists</div>
       <p className={styles.information}>
         <span className={styles.jive}>Jive</span> will randomize songs from each
