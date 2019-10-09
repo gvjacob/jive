@@ -1,5 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import { isEmpty } from 'lodash';
 
+/**
+ * Maintain index cycle state given a list, and handle
+ * resetting of index.
+ */
 const useIndex = (list) => {
   const [index, setIndex] = useState(0);
 
@@ -14,10 +19,12 @@ const useIndex = (list) => {
   };
 
   const previous = () => {
-    setIndex(index <= 0 ? list.length - 1 : index - 1);
+    if (!isEmpty(list)) {
+      setIndex(index <= 0 ? list.length - 1 : index - 1);
+    }
   };
 
-  return [previous, next, index];
+  return { previous, next, index };
 };
 
 export default useIndex;

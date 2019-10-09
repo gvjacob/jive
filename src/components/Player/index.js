@@ -18,7 +18,9 @@ const Player = ({ className, playlists, setDocumentTitle }) => {
   const spotify = useContext(SpotifyContext);
   const [connected, setConnected] = useState(false);
   const [player, setPlayer] = useState(null);
-  const [previousPlaylist, nextPlaylist, index] = useIndex(playlists);
+  const { previous: previousPlaylist, next: nextPlaylist, index } = useIndex(
+    playlists,
+  );
   const nextPlaylistRef = useRef(nextPlaylist);
   nextPlaylistRef.current = nextPlaylist;
   const [track, setTrack] = useState({
@@ -84,7 +86,6 @@ const Player = ({ className, playlists, setDocumentTitle }) => {
           } = getPlayerStateFromPayload(payload);
 
           if (Math.abs(position - duration) <= 5000) {
-            console.log('SHOULD GO NEXT');
             nextPlaylistRef.current();
           }
 

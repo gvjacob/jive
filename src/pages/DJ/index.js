@@ -29,7 +29,7 @@ const DJ = ({ className, setDocumentTitle }) => {
   };
 
   useEffect(() => {
-    const accessToken = getAccessTokenFromURL();
+    const accessToken = getAccessTokenFromURL(window.location.href);
 
     if (!accessToken) {
       window.location.replace('/');

@@ -1,11 +1,11 @@
-import { orderBy, partition } from 'lodash';
+import { partition, sortBy, findIndex } from 'lodash';
 
 /**
- * Get the 'code' query param from current URL.
+ * Get the 'access_token' query param from current URL.
  * Return null if not found.
  */
-export const getAccessTokenFromURL = () => {
-  const location = window.location.href.replace('#', '?');
+export const getAccessTokenFromURL = (url) => {
+  const location = url.replace('#', '?');
   const params = new URL(location).searchParams;
   return params.get('access_token', null);
 };
@@ -21,18 +21,27 @@ export const createAuthorizeURL = (
   return `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=token&redirect_uri=${redirectURI}&state=${state}&scope=${queryScopes}`;
 };
 
+/**
+ * Given list of Spotify playlists, order them by
+ * relevance to ballroom dance styles.
+ */
 export const orderPlaylists = (playlists) => {
   const styles = ['latin', 'rhythm', 'standard', 'smooth', 'open floor'];
+  const sorted = sortBy(playlists, [({ name }) => indexOf(name, styles)]);
 
-  const [ballroom, others] = partition(playlists, ({ name }) =>
-    includesOneOf(name, styles),
-  );
-
-  return ballroom.concat(others);
+  return sorted;
 };
 
-const includesOneOf = (value, options) => {
-  return options.some((option) => value.toLowerCase().includes(option));
+/**
+ * Get the index of value in options array.
+ * Return null if not found.
+ */
+export const indexOf = (value, options) => {
+  const index = findIndex(options, (option) =>
+    value.toLowerCase().includes(option.toLowerCase()),
+  );
+
+  return index >= 0 ? index : null;
 };
 
 export const getRandomInt = (max) => {
