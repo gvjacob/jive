@@ -108,7 +108,7 @@ const Player = ({ className, playlists, setDocumentTitle }) => {
   }, []);
 
   return (
-    <div className={cn(styles.player, className)}>
+    <div className={cn(styles.player, className)} data-testid={'Player'}>
       {connected ? (
         isEmpty(playlists) ? (
           <Idle />

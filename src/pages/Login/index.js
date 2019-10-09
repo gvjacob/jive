@@ -7,7 +7,7 @@ import asPage from '../../hocs/asPage';
 import styles from './styles.css';
 
 /**
- * Landing page for every unauthenticated user.
+ * Login page for unauthenticated user.
  */
 const Login = ({ className, setDocumentTitle }) => {
   // const redirectURI = 'https://jive.surge.sh/dj';
@@ -26,7 +26,7 @@ const Login = ({ className, setDocumentTitle }) => {
 
   useEffect(() => {
     setDocumentTitle('Login');
-  });
+  }, []);
 
   const login = () => {
     const authorizeURL = createAuthorizeURL(
@@ -40,7 +40,7 @@ const Login = ({ className, setDocumentTitle }) => {
   };
 
   return (
-    <div className={cn(styles.page, className)}>
+    <div className={cn(styles.page, className)} data-testid={'Login'}>
       <div className={styles.login}>
         <div className={styles.title}>Jive</div>
         <div className={styles.subtitle}>

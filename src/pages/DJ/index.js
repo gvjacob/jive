@@ -47,7 +47,7 @@ const DJ = ({ className, setDocumentTitle }) => {
   );
 
   return (
-    <div className={cn(styles.page, className)}>
+    <div className={cn(styles.page, className)} data-testid={'DJ'}>
       <Player
         className={styles.player}
         playlists={selectedPlaylists}
