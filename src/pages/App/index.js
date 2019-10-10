@@ -8,6 +8,7 @@ import pink from '@material-ui/core/colors/pink';
 import { SpotifyContext } from '../../contexts';
 import Login from '../Login';
 import DJ from '../DJ';
+import styles from './styles.css';
 
 /**
  * Main page for the entire application. It switches
@@ -43,14 +44,16 @@ const App = (props) => {
   });
 
   return (
-    <ThemeProvider theme={theme}>
-      <SpotifyContext.Provider value={spotify}>
-        <BrowserRouter>
-          <Route path={'/'} exact component={Login} />
-          <Route path={'/dj'} exact component={DJ} />
-        </BrowserRouter>
-      </SpotifyContext.Provider>
-    </ThemeProvider>
+    <div className={styles.app}>
+      <ThemeProvider theme={theme}>
+        <SpotifyContext.Provider value={spotify}>
+          <BrowserRouter>
+            <Route path={'/'} exact component={Login} />
+            <Route path={'/dj'} exact component={DJ} />
+          </BrowserRouter>
+        </SpotifyContext.Provider>
+      </ThemeProvider>
+    </div>
   );
 };
 

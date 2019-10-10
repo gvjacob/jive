@@ -9,12 +9,6 @@
   src: url('./assets/AvenirNext-Regular.ttf');
 }
 
-html,
-body,
-#app {
-  height: 100%;
-}
-
 body {
   margin: 0;
   padding: 0;

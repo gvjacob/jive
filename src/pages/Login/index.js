@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import cn from 'classnames';
 import Button from '@material-ui/core/Button';
 
@@ -15,14 +15,13 @@ const Login = ({ className, setDocumentTitle }) => {
   const clientId = 'a145c7bab9204f10b6db4651057b51bb';
   const scopes = [
     'user-read-private',
-    'user-read-email',
     'playlist-read-collaborative',
     'user-modify-playback-state',
     'streaming',
     'user-read-currently-playing',
     'user-read-playback-state',
   ];
-  const state = 'some-state';
+  const state = 'jive';
 
   useEffect(() => {
     setDocumentTitle('Login');
