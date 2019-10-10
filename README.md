@@ -1,7 +1,7 @@
 # **Jive**
 Automated Spotify DJ for playing various songs from your curated playlists.
 
-Jive is live [here](https://jive.surge.sh)!
+Jive is live [here](https://jive.now.sh)!
 
 ## **Getting Started**
 Clone the repo:
