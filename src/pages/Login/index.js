@@ -10,9 +10,9 @@ import styles from './styles.css';
  * Login page for unauthenticated user.
  */
 const Login = ({ className, setDocumentTitle }) => {
-  const redirectURI = 'https://jive.surge.sh/dj';
-  // const redirectURI = 'http://localhost:8080/dj';
-  const clientId = 'a145c7bab9204f10b6db4651057b51bb';
+  const redirectURI = `${process.env.BASE_URL}/dj`;
+  const clientId = process.env.CLIENT_ID;
+  console.log(redirectURI);
   const scopes = [
     'user-read-private',
     'playlist-read-collaborative',

@@ -4,12 +4,13 @@
   "description": "Starter React app built with Parcel",
   "main": "index.js",
   "scripts": {
-    "start": "parcel ./public/index.html -p 8080",
+    "start": "BASE_URL=http://localhost:8000 parcel ./public/index.html -p 8080",
     "restart": "npm run clean && npm run start",
     "clean": "rm -rf ./dist ./.cache",
     "build": "parcel build ./public/index.html",
     "deploy": "rm -rf dist && npm run build && cp ./dist/index.html ./dist/200.html && surge ./dist https://jive.surge.sh",
-    "test": "node_modules/.bin/jest --watchAll",
+    "test": "node_modules/.bin/jest",
+    "test-watch": "node_modules/.bin/jest --watchAll",
     "mc": "./scripts/createComponent.js"
   },
   "repository": {
@@ -26,6 +27,7 @@
     "@material-ui/core": "^4.4.2",
     "@material-ui/icons": "^4.4.1",
     "classnames": "^2.2.6",
+    "dotenv": "^8.1.0",
     "lodash": "^4.17.15",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",

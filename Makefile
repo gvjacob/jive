@@ -1,3 +1,6 @@
+install:
+	npm install
+
 start:
 	npm start
 
@@ -7,8 +10,5 @@ build:
 test:
 	npm test
 
-deploy:
-	rm -rf dist 
-	npm run build 
-	surge ./dist parcel-react.surge.sh
-
+test-watch:
+	npm run test-watch

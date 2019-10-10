@@ -1,0 +1,9 @@
+{
+  "name": "jive",
+  "routes": [
+    {
+      "src": "/dj",
+      "dest": "/index.html"
+    }
+  ]
+}
