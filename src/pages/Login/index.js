@@ -10,8 +10,8 @@ import styles from './styles.css';
  * Login page for unauthenticated user.
  */
 const Login = ({ className, setDocumentTitle }) => {
-  // const redirectURI = 'https://jive.surge.sh/dj';
-  const redirectURI = 'http://localhost:8080/dj';
+  const redirectURI = 'https://jive.surge.sh/dj';
+  // const redirectURI = 'http://localhost:8080/dj';
   const clientId = 'a145c7bab9204f10b6db4651057b51bb';
   const scopes = [
     'user-read-private',

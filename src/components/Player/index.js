@@ -16,13 +16,17 @@ import styles from './styles.css';
  */
 const Player = ({ className, playlists, setDocumentTitle }) => {
   const spotify = useContext(SpotifyContext);
+
   const [connected, setConnected] = useState(false);
   const [player, setPlayer] = useState(null);
+
   const { previous: previousPlaylist, next: nextPlaylist, index } = useIndex(
     playlists,
   );
+
   const nextPlaylistRef = useRef(nextPlaylist);
   nextPlaylistRef.current = nextPlaylist;
+
   const [track, setTrack] = useState({
     name: null,
     artist: null,
@@ -73,7 +77,6 @@ const Player = ({ className, playlists, setDocumentTitle }) => {
       });
 
       player.addListener('player_state_changed', (payload) => {
-        console.log(payload);
         if (payload === null) {
           setConnected(false);
         } else {
