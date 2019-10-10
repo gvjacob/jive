@@ -12,7 +12,6 @@ import styles from './styles.css';
 const Login = ({ className, setDocumentTitle }) => {
   const redirectURI = `${process.env.BASE_URL}/dj`;
   const clientId = process.env.CLIENT_ID;
-  console.log(redirectURI);
   const scopes = [
     'user-read-private',
     'playlist-read-collaborative',
