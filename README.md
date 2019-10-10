@@ -1,5 +1,5 @@
 # **Jive**
-Automated DJ for choosing various ballroom songs from different dance styles when running an open floor.
+Automated Spotify DJ for playing various songs from your curated playlists.
 
 Jive is live [here](https://jive.surge.sh)!
 

@@ -45,11 +45,8 @@ const Login = ({ className, setDocumentTitle }) => {
         <div className={styles.title}>Jive</div>
         <div className={styles.subtitle}>
           <p>
-            Automated DJ for choosing various ballroom songs from different
-            dance styles.
-          </p>
-          <p>
-            <b>Command your floor!</b>
+            Automated Spotify DJ for playing various songs from your curated
+            playlists.
           </p>
           <div className={styles.buttonContainer}>
             <Button
